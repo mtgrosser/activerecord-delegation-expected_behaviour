@@ -1,4 +1,4 @@
-# ActiveRecord::Delegation::ExpectedBehaviour
+# Expected behaviour for ActiveRecord::Delegation
 
 Prefer some class methods over methods from Enumerable on ActiveRecord relations
 
