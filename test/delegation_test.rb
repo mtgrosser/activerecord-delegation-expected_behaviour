@@ -26,6 +26,11 @@ class DelegationTest < Minitest::Test
     assert_raises(TypeError) { @foo.bars.to_a['one'] }
   end
   
+  def test_ovverride_still_works_after_loading_association
+    assert_equal 3, @foo.bars.to_a.size
+    assert_equal 1, @foo.bars['one'].number
+  end
+  
   def test_assignment_of_relations_to_association_collections
     @foo.bars = @bar_relation
     assert_equal 2, @foo.bars.reload.count
@@ -50,6 +55,13 @@ class DelegationTest < Minitest::Test
   def test_redelegation
     assert_raises(NoMethodError) { @foo.bars.sample.explain }
     assert_kind_of String, @foo.bars.sample(2).explain
+  end
+  
+  def test_association_extensions_override_enumerable_methods
+    assert_equal 'world', @foo.extended_bars.hello
+    assert_equal 1, @foo.extended_bars['one_ext'].number
+    assert_nil @foo.extended_bars['ten']
+    assert_raises(TypeError) { @foo.extended_bars.to_a['one_ext'] }
   end
   
 end
