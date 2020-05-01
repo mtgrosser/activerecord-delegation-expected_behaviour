@@ -3,7 +3,7 @@ require 'active_record'
 ActiveRecord::Delegation.module_eval do
   REDELEGATED_METHODS = [:encode_with, :to_ary, :join, :[], :&, :|, :+, :-, :sample,
     :reverse, :compact, :in_groups, :in_groups_of, :to_sentence, :to_formatted_s,
-    :shuffle, :split, :index]
+    :shuffle, :split, :index, :excluding]
 
   REDELEGATED_METHODS.each do |method|
     if method =~ /[^\]]=$/

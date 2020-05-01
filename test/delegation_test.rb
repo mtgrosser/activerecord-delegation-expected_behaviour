@@ -64,4 +64,8 @@ class DelegationTest < Minitest::Test
     assert_raises(TypeError) { @foo.extended_bars.to_a['one_ext'] }
   end
   
+  def test_excluding
+    assert_equal [@bars.first, @bars.second], @foo.bars.excluding(@bars.third)
+  end
+
 end
