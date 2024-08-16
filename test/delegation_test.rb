@@ -54,7 +54,7 @@ class DelegationTest < Minitest::Test
   
   def test_redelegation
     assert_raises(NoMethodError) { @foo.bars.sample.explain }
-    assert_kind_of String, @foo.bars.sample(2).explain
+    assert_kind_of String, @foo.bars.sample(2).explain.to_s
   end
   
   def test_association_extensions_override_enumerable_methods
