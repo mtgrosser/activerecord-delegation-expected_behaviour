@@ -81,6 +81,3 @@ DEPENDENCIES
   minitest
   rake
   sqlite3
-
-BUNDLED WITH
-  4.0.3
