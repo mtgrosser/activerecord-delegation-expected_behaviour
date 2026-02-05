@@ -16,8 +16,8 @@ ActiveRecord::Delegation.module_eval do
   protected
 
   def delegate_to_klass_or_records(method, *args, **kwargs, &block)
-    if @klass.respond_to?(method)
-      scoping { @klass.public_send(method, *args, **kwargs, &block) }
+    if model.respond_to?(method)
+      scoping { model.public_send(method, *args, **kwargs, &block) }
     else
       records.public_send(method, *args, **kwargs, &block)
     end
